@@ -13,7 +13,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Korman.  If not, see <http://www.gnu.org/licenses/>.
 
-debug = False
+debug = True
 
 from ..operators.op_mesh import *
 
@@ -59,6 +59,10 @@ def build_plasma_help_menu(self, context):
 
 def register():
     if debug: print(dir(bpy.types))
+    #bpy.types.INFO_MT_add.append(build_plasma_menu)
+    #bpy.types.INFO_MT_help.prepend(build_plasma_help_menu)
 
 def unregister():
     if debug: print(dir(bpy.types))
+    #bpy.types.INFO_MT_add.remove(build_plasma_menu)
+    #bpy.types.INFO_MT_help.remove(build_plasma_help_menu)

@@ -39,11 +39,22 @@ auto_load.init()
 def register():
     """Registers all Blender operators and GUI items in Korman"""
     auto_load.register()
+#    if debug: print(dir(bpy.utils))
+#    bpy.utils.register_class(nodes.PlasmaNodeItem)
+#    #nodes.register()
+#    operators.register()
+#    properties.register()
+#    ui.register()
 
 
 def unregister():
     """Unregisters all Blender operators and GUI items"""
     auto_load.register()
+#    bpy.utils.unregister_class(nodes.PlasmaNodeItem)
+#    #nodes.unregister()
+#    operators.unregister()
+#    properties.unregister()
+#    ui.unregister()
 
 
 if __name__ == "__main__":
