@@ -1,8 +1,6 @@
 Korman
 ======
 
-##### NOTE: this is the Korman version for blender-2.8x
-
 An open source, GPLv3 Blender addon for creating ages for Cyan Worlds' proprietary Plasma engine
 and its open source variant, CyanWorlds.com Engine. For more information, visit https://guildofwriters.org
 

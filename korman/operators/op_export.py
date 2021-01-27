@@ -13,8 +13,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Korman.  If not, see <http://www.gnu.org/licenses/>.
 
-debug = True
-
 import bpy
 from bpy.props import *
 import cProfile
@@ -32,9 +30,8 @@ from ..properties.prop_world import PlasmaAge
 class ExportOperator:
     def _get_default_path(self, context):
         blend_filepath = context.blend_data.filepath
-        #if not blend_filepath:
-        #    if debug: print(dir(context.scene.world))
-        #    blend_filepath = context.scene.world.plasma_age.age_name
+        if not blend_filepath:
+            blend_filepath = context.scene.world.plasma_age.age_name
         if not blend_filepath:
             blend_filepath = "Korman"
         return blend_filepath

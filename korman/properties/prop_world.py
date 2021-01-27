@@ -58,7 +58,6 @@ class PlasmaFni(bpy.types.PropertyGroup):
 
 class PlasmaGames(bpy.types.PropertyGroup):
     bl_idname = "world.plasma_games"
-    games = None
 
     active_game_index = IntProperty(options={"HIDDEN"})
 
@@ -150,7 +149,6 @@ class PlasmaPage(bpy.types.PropertyGroup):
 bpy.utils.register_class(PlasmaPage)
 
 class PlasmaAge(bpy.types.PropertyGroup):
-    bl_idname = "world.plasma_age"
     def export(self, exporter):
         _age_info = plAgeInfo()
         _age_info.dayLength = self.day_length
