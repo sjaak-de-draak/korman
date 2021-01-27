@@ -98,7 +98,7 @@ def _plasma_draw_area_lamp(self, context):
 # Swap out the draw functions for the standard Area Shape panel
 # TODO: Maybe we should consider standardizing an interface for overriding
 #       standard Blender panels? This seems like a really useful approach.
-from bl_ui import properties_data_light
-properties_data_light.DATA_PT_area._draw_blender = properties_data_light.DATA_PT_area.draw
-properties_data_light.DATA_PT_area.draw = _draw_area_lamp
-del properties_data_light
+from bl_ui import properties_data_lamp
+properties_data_lamp.DATA_PT_area._draw_blender = properties_data_lamp.DATA_PT_area.draw
+properties_data_lamp.DATA_PT_area.draw = _draw_area_lamp
+del properties_data_lamp

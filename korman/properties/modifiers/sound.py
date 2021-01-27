@@ -38,7 +38,6 @@ class PlasmaSfxFade(bpy.types.PropertyGroup):
                            default=1.0, min=0.0,
                            options=set(), subtype="TIME", unit="TIME")
 
-bpy.utils.register_class(PlasmaSfxFade)
 
 class PlasmaSound(idprops.IDPropMixin, bpy.types.PropertyGroup):
     @contextmanager

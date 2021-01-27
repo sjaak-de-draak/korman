@@ -361,7 +361,7 @@ class PlasmaLightMapGen(idprops.IDPropMixin, PlasmaModifierProperties, PlasmaMod
 
     lights = PointerProperty(name="Light Group",
                              description="Group that defines the collection of lights to bake",
-                             type=bpy.types.PropertyGroup)
+                             type=bpy.types.Group)
 
     uv_map = StringProperty(name="UV Texture",
                             description="UV Texture used as the basis for the lightmap")

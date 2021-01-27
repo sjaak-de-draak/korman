@@ -13,8 +13,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Korman.  If not, see <http://www.gnu.org/licenses/>.
 
-debug = True
-
 import bpy
 from . import addon_prefs
 from . import exporter, render
@@ -22,39 +20,36 @@ from . import properties, ui
 from . import nodes
 from . import operators
 
-from . import auto_load
-
 bl_info = {
     "name":        "Korman",
     "author":      "Guild of Writers",
-    "blender":     (2, 83, 0),
+    "blender":     (2, 79, 0),
     "location":    "File > Import-Export",
     "description": "Exporter for Cyan Worlds' Plasma Engine",
     "warning":     "beta",
     "category":    "System",
 }
 
-auto_load.init()
 
 def register():
     """Registers all Blender operators and GUI items in Korman"""
-    auto_load.register()
-#    if debug: print(dir(bpy.utils))
-#    bpy.utils.register_class(nodes.PlasmaNodeItem)
-#    #nodes.register()
-#    operators.register()
-#    properties.register()
-#    ui.register()
+
+    # This will auto-magically register all blender classes for us
+    bpy.utils.register_module(__name__)
+
+    # Sigh... Blender isn't totally automated.
+    nodes.register()
+    operators.register()
+    properties.register()
+    ui.register()
 
 
 def unregister():
     """Unregisters all Blender operators and GUI items"""
-    auto_load.register()
-#    bpy.utils.unregister_class(nodes.PlasmaNodeItem)
-#    #nodes.unregister()
-#    operators.unregister()
-#    properties.unregister()
-#    ui.unregister()
+    bpy.utils.unregister_module(__name__)
+    nodes.unregister()
+    operators.unregister()
+    ui.unregister()
 
 
 if __name__ == "__main__":

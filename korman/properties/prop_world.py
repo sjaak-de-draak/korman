@@ -73,7 +73,6 @@ class PlasmaGames(bpy.types.PropertyGroup):
 
 
 class PlasmaPage(bpy.types.PropertyGroup):
-    bl_idname = "world.plasma_page"
     def _check_suffix(self, context):
         """Verifies that a suffix change does not conflict"""
         old = self.last_seq_suffix
@@ -146,7 +145,6 @@ class PlasmaPage(bpy.types.PropertyGroup):
                                   options={"HIDDEN"},
                                   default=False)
 
-bpy.utils.register_class(PlasmaPage)
 
 class PlasmaAge(bpy.types.PropertyGroup):
     def export(self, exporter):

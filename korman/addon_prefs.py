@@ -50,7 +50,6 @@ class PlasmaGame(bpy.types.PropertyGroup):
         else:
             return self.is_property_set("player") and bool(self.player.strip())
 
-bpy.utils.register_class(PlasmaGame)
 
 class KormanAddonPreferences(bpy.types.AddonPreferences):
     bl_idname = __package__
@@ -67,12 +66,6 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
     def _check_py27_exe(self, context):
         if self._ensure_abspath((2, 7)):
             self._check_python((2, 7))
-    def _check_py37_exe(self, context):
-        if self._ensure_abspath((3, 7)):
-            self._check_python((3, 7))
-    def _check_py39_exe(self, context):
-        if self._ensure_abspath((3, 9)):
-            self._check_python((3, 9))
 
     python22_executable = StringProperty(name="Python 2.2",
                                          description="Path to the Python 2.2 executable",
@@ -89,16 +82,6 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
                                          options=set(),
                                          subtype="FILE_PATH",
                                          update=_check_py27_exe)
-    python37_executable = StringProperty(name="Python 3.7",
-                                         description="Path to the Python 3.7 executable",
-                                         options=set(),
-                                         subtype="FILE_PATH",
-                                         update=_check_py37_exe)
-    python39_executable = StringProperty(name="Python 3.9",
-                                         description="Path to the Python 3.9 executable",
-                                         options=set(),
-                                         subtype="FILE_PATH",
-                                         update=_check_py39_exe)
 
     def _validate_py_exes(self):
         if not self.is_property_set("python22_valid"):
@@ -107,18 +90,12 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
             self._check_python((2, 3))
         if not self.is_property_set("python27_valid"):
             self._check_python((2, 7))
-        if not self.is_property_set("python37_valid"):
-            self._check_python((3, 7))
-        if not self.is_property_set("python39_valid"):
-            self._check_python((3, 9))
         return True
 
     # Internal error states
     python22_valid = BoolProperty(options={"HIDDEN", "SKIP_SAVE"})
     python23_valid = BoolProperty(options={"HIDDEN", "SKIP_SAVE"})
     python27_valid = BoolProperty(options={"HIDDEN", "SKIP_SAVE"})
-    python37_valid = BoolProperty(options={"HIDDEN", "SKIP_SAVE"})
-    python39_valid = BoolProperty(options={"HIDDEN", "SKIP_SAVE"})
     python_validated = BoolProperty(get=_validate_py_exes, options={"HIDDEN", "SKIP_SAVE"})
 
     def _check_python(self, py_version):
@@ -142,13 +119,13 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
         split = layout.split()
         main_col = split.column()
 
-        main_col.label(text="Plasma Games:")
+        main_col.label("Plasma Games:")
         row = main_col.row()
         row.template_list("PlasmaGameListRW", "games", self, "games", self,
                           "active_game_index", rows=3)
         col = row.column(align=True)
-        col.operator("world.plasma_game_add", icon="ZOOM_IN", text="")
-        col.operator("world.plasma_game_remove", icon="ZOOM_OUT", text="")
+        col.operator("world.plasma_game_add", icon="ZOOMIN", text="")
+        col.operator("world.plasma_game_remove", icon="ZOOMOUT", text="")
         col.operator("world.plasma_game_convert", icon="IMPORT", text="")
 
         # Game Properties
@@ -157,7 +134,7 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
             active_game = self.games[active_game_index]
 
             col = split.column()
-            col.label(text="Game Configuration:")
+            col.label("Game Configuration:")
             box = col.box().column()
 
             row = box.row(align=True)
@@ -181,17 +158,13 @@ class KormanAddonPreferences(bpy.types.AddonPreferences):
         # Python Installs
         assert self.python_validated
         col = layout.column()
-        col.label(text="Python Executables:")
+        col.label("Python Executables:")
         col.alert = not self.python22_valid
         col.prop(self, "python22_executable")
         col.alert = not self.python23_valid
         col.prop(self, "python23_executable")
         col.alert = not self.python27_valid
         col.prop(self, "python27_executable")
-        col.alert = not self.python37_valid
-        col.prop(self, "python37_executable")
-        col.alert = not self.python39_valid
-        col.prop(self, "python39_executable")
 
     @classmethod
     def register(cls):

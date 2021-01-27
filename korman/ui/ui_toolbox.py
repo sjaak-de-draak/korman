@@ -16,15 +16,10 @@
 import bpy
 import itertools
 
-if bpy.app.version < (2,80,0):
-    Region = "TOOLS"
-else:
-    Region = "UI"
-
 class ToolboxPanel:
     bl_category = "Tools"
     bl_space_type = "VIEW_3D"
-    bl_region_type = Region
+    bl_region_type = "TOOLS"
 
     @classmethod
     def poll(cls, context):
@@ -34,7 +29,6 @@ class ToolboxPanel:
 class PlasmaToolboxPanel(ToolboxPanel, bpy.types.Panel):
     bl_context = "objectmode"
     bl_label = "Plasma"
-    bl_idname = "world.plasma_toolbox_panel"
 
     def draw(self, context):
         layout = self.layout

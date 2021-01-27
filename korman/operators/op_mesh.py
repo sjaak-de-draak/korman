@@ -622,8 +622,8 @@ class PlasmaAddLinkingBookMeshOperator(PlasmaMeshOperator, bpy.types.Operator):
         return self.panel_name if self.panel_name else "LinkingBook"
 
 
-#def register():
-#    bpy.utils.register_module(__name__)
+def register():
+    bpy.utils.register_module(__name__)
 
-#def unregister():
-#    bpy.utils.unregister_module(__name__)
+def unregister():
+    bpy.utils.unregister_module(__name__)

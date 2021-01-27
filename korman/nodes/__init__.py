@@ -13,8 +13,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with Korman.  If not, see <http://www.gnu.org/licenses/>.
 
-debug = True
-
 import bpy
 import inspect
 from nodeitems_utils import NodeCategory, NodeItem
@@ -97,7 +95,6 @@ for i in sorted(_kategories.keys(), key=lambda x: _kategory_names[x]):
     _actual_kategories.append(PlasmaNodeCategory(i, _kategory_names[i], items=_kat_items))
 
 def register():
-    if debug: print("Registering: %s" % _actual_kategories)
     nodeitems_utils.register_node_categories("PLASMA_NODES", _actual_kategories)
 
 def unregister():

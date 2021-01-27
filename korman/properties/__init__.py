@@ -28,9 +28,9 @@ from .prop_world import *
 
 
 def register():
-    #bpy.types.Camera.plasma_camera = bpy.props.PointerProperty(type=PlasmaCamera)
-    #bpy.types.Image.plasma_image = bpy.props.PointerProperty(type=PlasmaImage)
-    bpy.types.Light.plasma_lamp = bpy.props.PointerProperty(type=PlasmaLamp)
+    bpy.types.Camera.plasma_camera = bpy.props.PointerProperty(type=PlasmaCamera)
+    bpy.types.Image.plasma_image = bpy.props.PointerProperty(type=PlasmaImage)
+    bpy.types.Lamp.plasma_lamp = bpy.props.PointerProperty(type=PlasmaLamp)
     bpy.types.Object.plasma_net = bpy.props.PointerProperty(type=PlasmaNet)
     bpy.types.Object.plasma_object = bpy.props.PointerProperty(type=PlasmaObject)
     bpy.types.Scene.plasma_scene = bpy.props.PointerProperty(type=PlasmaScene)
